@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%zitx#v9&@r3_kkv+rp17n5+*74-y(1ynl)9uo%y4y*irc0f@a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+CSRF_TRUSTED_ORIGINS = ["https://*.trydjango.passiveradio.com"]
 ALLOWED_HOSTS = ['*']
 
 # Application definition
