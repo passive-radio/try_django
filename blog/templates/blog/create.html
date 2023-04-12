@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}ブログ | 投稿画面{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>記事を書く</h1>
+    <form action="{% url 'blog:create' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <label>{{ field.label_tag }}</label>
+            {{ field}}
+            <br><br>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-outline-primary">投稿する</button>
+    </form>
+</div>
+User: {{ user }}
+<br>
+Email: {{ user.email }}
+<br>
+created_at: {{ user.created_at }}
+<br>
+is_authenticated: {{ user.is_authenticated }}
+{% endblock %}

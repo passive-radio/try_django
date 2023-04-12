@@ -1,0 +1,21 @@
+{% extends "blog/blog-base.html" %}
+
+{% block title %}ブログ{% endblock %}
+
+{% block blog %}
+<div>
+    {% for article in articles %}
+        primary-key: {{ article.pk }}<br>
+        author: {{ article.author }}<br>
+        title: {{ article.title }}<br>
+        {% if admin %}
+            detail: <a href="{% url 'blog:edit' article.pk %}">編集する</a><br>
+        {% else %}
+        detail: <a href="{% url 'blog:detail' article.pk %}">読む</a><br>
+        {% endif %}
+            created_at: {{ article.created_at }}
+
+        <hr>
+    {% endfor %}
+</div>
+{% endblock %}

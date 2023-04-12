@@ -1,0 +1,15 @@
+{% extends "blog/blog-base.html" %}
+
+{% block title %}ブログ | {{ article.title }}{% endblock %}
+
+{% block blog %}
+<a href="{% url 'blog:article' %}">一覧に戻る</a>
+<div>
+    {{ article }}
+    author: {{ article.author }}<br>
+    title: {{ article.title }}<br>
+    body: {{ article.body }}<br>
+    created_at: {{ article.created_at }}<br>
+    update_at: {{ article.updated_at }}
+</div>
+{% endblock %}

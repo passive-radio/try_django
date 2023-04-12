@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}ログイン{% endblock %}
+
+{% block content %}
+User: {{ user }}
+<br>
+Email: {{ user.email }}
+<br>
+created_at: {{ user.created_at }}
+<br>
+is_authenticated: {{ user.is_authenticated }}
+<div class="container">
+    <h1>ログイン</h1>
+    <form action="{% url 'account:login' %}" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        Email address: <input type="text" name="email">
+        <br>
+        Password: <input type="text" name="password">
+        <br>
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+    </form>
+</div>
+{% endblock %}

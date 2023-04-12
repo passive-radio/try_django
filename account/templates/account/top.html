@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}トップ{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5">Top</h1>
+    <a href="{% url 'blog:article' %}" class="btn btn-outline-primary">ブログ</a>
+    <br>
+    {% if user.is_authenticated %}
+        <h1 class="my-5">こんにちは、{{ user.email }}！</h1>
+        <a href="{% url 'account:logout' %}" class="btn btn-outline-primary">ログアウト</a>
+    {% else %}
+        <a href="{% url 'account:signup' %}" class="btn btn-outline-primary">サインアップ</a>
+        <a href="{% url 'account:login' %}" class="btn btn-outline-primary">ログイン</a>
+    {% endif %}
+</div>
+{% endblock %}

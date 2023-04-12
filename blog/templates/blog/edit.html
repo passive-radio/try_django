@@ -1,0 +1,40 @@
+{% extends "blog/blog-base.html" %}
+
+{% block title %}ブログ | 編集{{ article.title }}{% endblock %}
+
+{% block blog %}
+<a href="{% url 'blog:admin' %}">一覧に戻る</a>
+<div>
+    {{ article }}
+    author: {{ article.author }}<br>
+    title: {{ article.title }}<br>
+    body: {{ article.body }}<br>
+    created_at: {{ article.created_at }}<br>
+    update_at: {{ article.updated_at }}
+</div>
+<div class="container">
+    <h1>編集</h1>
+    <form action="{% url 'blog:update_or_delete' article.pk %}" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>作成日時</td>
+                <td>{{ article.created_at }}</td>
+            </tr>
+            <tr>
+                <td>タイトル</td>
+                <td><input type="text" name="title" value="{{ article.title }}"></td>
+            </tr>
+            <tr>
+                <td>本文</td>
+                <td><input type="text" name="body" value="{{ article.body }}"></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" name="update" onclick="return confirm('記事が公開されます')" class="btn btn-outline-primary">更新する</button>
+        <br>
+        <hr>
+        <button type="submit" name="delete" onclick="return confirm('記事が削除されます')" class="btn btn-outline-primary">記事を削除する</button>
+    </form>    
+</div>
+{% endblock %}
